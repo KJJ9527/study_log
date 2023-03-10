@@ -1,0 +1,29 @@
+.AddlogWrapper {
+  background-color: skyblue;
+  
+}
+.AddlogWrapper .btn {
+  padding: 10px 0;
+}
+.AddlogWrapper .btn button {
+  display: block;
+  width: 200px;
+  height: 50px;
+  margin: 0px auto;
+  cursor: pointer;
+
+}
+.dateWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.dateWrapper label {
+  display: flex;
+  /* height: 40px; */
+  line-height: 40px;
+  margin: 10px;
+}
+.dateWrapper input {
+  flex: auto;
+  outline: none;
+}

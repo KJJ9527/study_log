@@ -1,0 +1,17 @@
+.date {
+  width: 100px;
+  /* 空间不足时，不缩小 */
+  flex-shrink:0;
+  text-align: center;
+  overflow: hidden;
+}
+.date .month {
+  line-height: 30px;
+  background-color: red;
+}
+.date .day {
+  line-height: 100px;
+  background-color: #fff;
+  font-size: 50px;
+  font-weight: bold;
+}
