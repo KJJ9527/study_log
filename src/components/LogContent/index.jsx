@@ -23,14 +23,20 @@ const LogContent = () => {
     },
     {
       id: '003',
-      date: new Date(2022, 2, 11, 11, 30),
+      date: new Date(2022, 4, 11, 11, 30),
       desc: '学习JavaScript',
       time: 40,
     },
     {
       id: '004',
-      date: new Date(2022, 2, 15, 10, 30),
+      date: new Date(2022, 6, 15, 10, 30),
       desc: '学习React',
+      time: 80,
+    },
+    {
+      id: '005',
+      date: new Date(2020, 9, 28, 10, 30),
+      desc: '学习Vue',
       time: 80,
     },
   ])
@@ -45,28 +51,40 @@ const LogContent = () => {
     setLogsData(newLogsData)
   }
 
-  // 筛选数据
+  const [currentYear, setCurrentYear] = useState(0)
+  // 获取当前选择年份
   const getYear = (year) => {
-    // const newLogsData = logsData.filter(
-    //   (item) => item.date.getFullYear() === year
-    // )
-    // setLogsData(newLogsData)
+    setCurrentYear(year)
   }
   // 遍历数据
-  const logItemDate = logsData.map((item) => (
-    <Item
-      key={item.id}
-      id={item.id}
-      date={item.date}
-      desc={item.desc}
-      time={item.time}
-      onDelLog={onDelLog}
-    />
-  ))
+
+  const logItemDate = currentYear
+    ? logsData
+        .filter((item) => item.date.getFullYear() === currentYear)
+        .map((item) => (
+          <Item
+            key={item.id}
+            id={item.id}
+            date={item.date}
+            desc={item.desc}
+            time={item.time}
+            onDelLog={onDelLog}
+          />
+        ))
+    : logsData.map((item) => (
+        <Item
+          key={item.id}
+          id={item.id}
+          date={item.date}
+          desc={item.desc}
+          time={item.time}
+          onDelLog={onDelLog}
+        />
+      ))
 
   return (
     <RadiusShadow className="contentwrapper">
-      <LogFilter getYear={getYear} />
+      <LogFilter getYear={getYear} year={currentYear} />
       {logItemDate.length > 0 ? logItemDate : <p>当前无数据</p>}
     </RadiusShadow>
   )
